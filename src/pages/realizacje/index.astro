@@ -1,0 +1,592 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { realizationCategories, realizations, getRealizationsByCategory } from '../../data/realizations';
+
+const sortedCategories = [...realizationCategories].sort((a, b) => a.order - b.order);
+---
+
+<Layout 
+  title="Realizacje kuchni na wymiar | Art Kuchnie Toruń"
+  description="Zobacz nasze realizacje kuchni na wymiar w Toruniu. Galeria zdjęć kuchni laminowanych, lakierowanych, akrylowych i fornirowanych."
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Portfolio</span>
+      <h1 class="page-header__title">Nasze realizacje</h1>
+      <p class="page-header__subtitle">
+        Każda kuchnia to osobna historia. Przeglądaj galerię naszych realizacji 
+        i znajdź inspirację dla swojego projektu.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="category-filters" id="categoryFilters">
+        <button class="category-btn active" data-category="all">
+          Wszystkie <span class="count">({realizations.length})</span>
+        </button>
+        {sortedCategories.map(cat => {
+          const count = getRealizationsByCategory(cat.id).length;
+          return (
+            <button class="category-btn" data-category={cat.id}>
+              {cat.name} <span class="count">({count})</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div class="results-info" id="resultsInfo"></div>
+
+      <div class="gallery" id="gallery" data-realizations={JSON.stringify(realizations)}>
+        <div class="gallery__grid" id="galleryGrid"></div>
+      </div>
+
+      <nav class="pagination" id="pagination" aria-label="Nawigacja stron"></nav>
+    </div>
+  </section>
+
+  <div class="modal" id="galleryModal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Zamknij">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+      <div class="modal__counter"><span class="modal__current">1</span> / <span class="modal__total">1</span></div>
+      <button class="modal__nav modal__nav--prev" aria-label="Poprzednie">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <div class="modal__image-container">
+        <img class="modal__image" src="" alt="" />
+      </div>
+      <button class="modal__nav modal__nav--next" aria-label="Następne">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+      <div class="modal__thumbnails"></div>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Podoba Ci się to, co widzisz?</h2>
+      <p class="cta__text">
+        Skontaktuj się z nami, opowiedz o swoich potrzebach. 
+        Zrobimy dla Ciebie coś równie dobrego – albo lepszego.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style is:global>
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  
+  .category-btn {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 30px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+  }
+  
+  .category-btn:hover {
+    border-color: var(--color-accent, #b8860b);
+    color: var(--color-accent, #b8860b);
+  }
+  
+  .category-btn.active {
+    background: var(--color-accent, #b8860b);
+    border-color: var(--color-accent, #b8860b);
+    color: #fff;
+  }
+  
+  .category-btn .count {
+    font-size: 0.8125rem;
+    opacity: 0.7;
+  }
+
+  .results-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 0.9375rem;
+  }
+
+  /* GALERIA - KWADRATOWE KAFELKI */
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  
+  .gallery__item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Wymusza kwadrat */
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: #f5f5f5;
+  }
+  
+  .gallery__item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Przycina do kwadratu */
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery__item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* PAGINACJA */
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .pagination:empty {
+    display: none;
+  }
+  
+  .pagination .btn-prev,
+  .pagination .btn-next {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+  
+  .pagination .btn-prev:hover:not(:disabled),
+  .pagination .btn-next:hover:not(:disabled) {
+    border-color: var(--color-accent, #b8860b);
+    color: var(--color-accent, #b8860b);
+  }
+  
+  .pagination .btn-prev:disabled,
+  .pagination .btn-next:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .pagination .btn-prev svg,
+  .pagination .btn-next svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  
+  .pagination .pages {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .pagination .page-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 0.5rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+  
+  .pagination .page-num:hover:not(.active) {
+    border-color: var(--color-accent, #b8860b);
+    color: var(--color-accent, #b8860b);
+  }
+  
+  .pagination .page-num.active {
+    background: var(--color-accent, #b8860b);
+    border-color: var(--color-accent, #b8860b);
+    color: #fff;
+  }
+  
+  .pagination .ellipsis {
+    padding: 0 0.5rem;
+    color: #999;
+  }
+
+  /* MODAL */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    background: rgba(0,0,0,0.95);
+  }
+  
+  .modal.active { display: block; }
+  .modal__overlay { position: absolute; inset: 0; }
+  
+  .modal__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 100px;
+  }
+  
+  .modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  .modal__close svg { width: 28px; height: 28px; fill: #fff; }
+  
+  .modal__counter {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9375rem;
+  }
+  
+  .modal__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 10;
+  }
+  
+  .modal__nav:hover { background: rgba(255,255,255,0.2); }
+  .modal__nav svg { width: 32px; height: 32px; fill: #fff; }
+  .modal__nav--prev { left: 16px; }
+  .modal__nav--next { right: 16px; }
+  
+  .modal__image-container {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal__image {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    object-fit: contain;
+  }
+  
+  .modal__thumbnails {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    max-width: 80vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  
+  .modal__thumb {
+    flex-shrink: 0;
+    width: 80px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .modal__thumb.active { border-color: var(--color-accent, #b8860b); }
+  .modal__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  
+  @media (max-width: 768px) {
+    .category-filters { gap: 0.5rem; }
+    .category-btn { padding: 0.5rem 1rem; font-size: 0.875rem; }
+    .gallery__grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.5rem; }
+    .modal__nav { width: 44px; height: 44px; }
+    .modal__nav svg { width: 24px; height: 24px; }
+    .pagination .btn-prev span,
+    .pagination .btn-next span { display: none; }
+    .pagination .btn-prev,
+    .pagination .btn-next { padding: 0.75rem; }
+    .pagination .page-num { min-width: 40px; height: 40px; }
+  }
+</style>
+
+<script>
+  const ITEMS_PER_PAGE = 24;
+  
+  const gallery = document.getElementById('gallery');
+  const galleryGrid = document.getElementById('galleryGrid');
+  const pagination = document.getElementById('pagination');
+  const resultsInfo = document.getElementById('resultsInfo');
+  const filterBtns = document.querySelectorAll('.category-btn');
+  const modal = document.getElementById('galleryModal');
+  
+  if (!gallery || !galleryGrid || !pagination || !resultsInfo) {
+    console.error('Brak elementów galerii');
+  }
+  
+  const allRealizations = JSON.parse(gallery?.dataset.realizations || '[]');
+  
+  let currentCategory = 'all';
+  let currentPage = 1;
+  let filteredItems: typeof allRealizations = [];
+  
+  function filterByCategory(category: string) {
+    if (category === 'all') {
+      filteredItems = [...allRealizations];
+    } else {
+      filteredItems = allRealizations.filter((r: any) => r.categoryId === parseInt(category));
+    }
+  }
+  
+  function renderGallery() {
+    const totalItems = filteredItems.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+    currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+    
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const pageItems = filteredItems.slice(startIndex, endIndex);
+    
+    if (galleryGrid) {
+      galleryGrid.innerHTML = pageItems.map((real: any, i: number) => `
+        <div class="gallery__item" data-index="${startIndex + i}">
+          <img src="${real.imageUrl}" alt="Realizacja ${real.id}" loading="lazy" />
+        </div>
+      `).join('');
+    }
+    
+    if (resultsInfo) {
+      resultsInfo.textContent = totalItems > 0 
+        ? `Wyświetlanie ${startIndex + 1}–${Math.min(endIndex, totalItems)} z ${totalItems} realizacji`
+        : 'Brak realizacji';
+    }
+    
+    renderPagination(totalPages);
+  }
+  
+  function renderPagination(totalPages: number) {
+    if (!pagination) return;
+    
+    if (totalPages <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
+    
+    const pages = getPageNumbers(totalPages);
+    
+    let pagesHtml = '';
+    pages.forEach(page => {
+      if (page === 'ellipsis') {
+        pagesHtml += `<span class="ellipsis">…</span>`;
+      } else {
+        pagesHtml += `<button class="page-num ${page === currentPage ? 'active' : ''}" data-page="${page}">${page}</button>`;
+      }
+    });
+    
+    pagination.innerHTML = `
+      <button class="btn-prev" ${currentPage <= 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        <span>Poprzednia</span>
+      </button>
+      <div class="pages">${pagesHtml}</div>
+      <button class="btn-next" ${currentPage >= totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
+        <span>Następna</span>
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+    `;
+    
+    pagination.querySelectorAll('[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const page = parseInt(btn.getAttribute('data-page') || '1');
+        if (page >= 1 && page <= totalPages) {
+          currentPage = page;
+          renderGallery();
+          gallery?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+  
+  function getPageNumbers(totalPages: number): (number | 'ellipsis')[] {
+    const pages: (number | 'ellipsis')[] = [];
+    
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+      return pages;
+    }
+    
+    pages.push(1);
+    
+    if (currentPage > 3) pages.push('ellipsis');
+    
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    
+    for (let i = start; i <= end; i++) pages.push(i);
+    
+    if (currentPage < totalPages - 2) pages.push('ellipsis');
+    
+    pages.push(totalPages);
+    
+    return pages;
+  }
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      currentCategory = btn.getAttribute('data-category') || 'all';
+      currentPage = 1;
+      filterByCategory(currentCategory);
+      renderGallery();
+    });
+  });
+  
+  // Modal
+  if (modal) {
+    const modalImage = modal.querySelector('.modal__image') as HTMLImageElement;
+    const currentSpan = modal.querySelector('.modal__current') as HTMLElement;
+    const totalSpan = modal.querySelector('.modal__total') as HTMLElement;
+    const thumbnailsContainer = modal.querySelector('.modal__thumbnails') as HTMLElement;
+    
+    let modalIndex = 0;
+    
+    const openModal = (index: number) => {
+      modalIndex = index;
+      updateModal();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+    
+    const updateModal = () => {
+      const item = filteredItems[modalIndex];
+      if (!item) return;
+      
+      modalImage.src = item.imageUrl;
+      currentSpan.textContent = (modalIndex + 1).toString();
+      totalSpan.textContent = filteredItems.length.toString();
+      
+      const startThumb = Math.max(0, modalIndex - 3);
+      const endThumb = Math.min(filteredItems.length, modalIndex + 4);
+      
+      thumbnailsContainer.innerHTML = '';
+      for (let i = startThumb; i < endThumb; i++) {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal__thumb' + (i === modalIndex ? ' active' : '');
+        thumb.innerHTML = `<img src="${filteredItems[i].imageUrl}" alt="" />`;
+        thumb.addEventListener('click', () => { modalIndex = i; updateModal(); });
+        thumbnailsContainer.appendChild(thumb);
+      }
+    };
+    
+    const goTo = (delta: number) => {
+      modalIndex = (modalIndex + delta + filteredItems.length) % filteredItems.length;
+      updateModal();
+    };
+    
+    galleryGrid?.addEventListener('click', (e) => {
+      const item = (e.target as HTMLElement).closest('.gallery__item') as HTMLElement;
+      if (item) {
+        const index = parseInt(item.dataset.index || '0');
+        openModal(index);
+      }
+    });
+    
+    modal.querySelector('.modal__close')?.addEventListener('click', closeModal);
+    modal.querySelector('.modal__overlay')?.addEventListener('click', closeModal);
+    modal.querySelector('.modal__nav--prev')?.addEventListener('click', () => goTo(-1));
+    modal.querySelector('.modal__nav--next')?.addEventListener('click', () => goTo(1));
+    
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') goTo(-1);
+      if (e.key === 'ArrowRight') goTo(1);
+    });
+  }
+  
+  // Init
+  filterByCategory('all');
+  renderGallery();
+</script>

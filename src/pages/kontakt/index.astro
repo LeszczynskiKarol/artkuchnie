@@ -1,0 +1,365 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Kontakt | Art Kuchnie Toruń - Kuchnie na wymiar"
+  description="Skontaktuj się z Art Kuchnie w Toruniu. Bezpłatna wycena kuchni na wymiar. Zadzwoń 576 376 567 lub napisz. Zapraszamy do naszego showroomu."
+  canonical="https://artkuchnie.pl/kontakt/"
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Skontaktuj się</span>
+      <h1 class="page-header__title">Kontakt</h1>
+      <p class="page-header__subtitle">
+        Masz pytania dotyczące kuchni na wymiar? Chcesz umówić się na bezpłatną wycenę? 
+        Skontaktuj się z nami – chętnie pomożemy.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-form-wrapper">
+          <h2>Wyślij wiadomość</h2>
+          <p class="contact-form-intro">
+            Opisz swoją wizję kuchni, a my przygotujemy dla Ciebie bezpłatną wycenę. 
+            Odpowiadamy zazwyczaj w ciągu 24 godzin.
+          </p>
+          
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Imię i nazwisko *</label>
+              <input type="text" id="name" name="name" required placeholder="Jan Kowalski">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Adres e-mail *</label>
+                <input type="email" id="email" name="email" required placeholder="jan@example.pl">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="500 000 000">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Temat</label>
+              <select id="subject" name="subject">
+                <option value="wycena">Bezpłatna wycena kuchni</option>
+                <option value="projekt">Projekt kuchni</option>
+                <option value="wizyta">Umówienie wizyty w showroomie</option>
+                <option value="inne">Inne pytanie</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Wiadomość *</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Opisz swoją wizję kuchni - wymiary pomieszczenia, preferowany styl, materiały, budżet..."></textarea>
+            </div>
+            
+            <div class="form-group form-checkbox">
+              <input type="checkbox" id="privacy" name="privacy" required>
+              <label for="privacy">
+                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie. 
+                <a href="/polityka-prywatnosci/">Polityka prywatności</a>
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn--primary btn--full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              Wyślij wiadomość
+            </button>
+          </form>
+        </div>
+        
+        <div class="contact-info">
+          <div class="contact-info-card">
+            <h3>Dane kontaktowe</h3>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div>
+                <strong>Telefon</strong>
+                <a href="tel:+48576376567">576 376 567</a>
+              </div>
+            </div>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div>
+                <strong>E-mail</strong>
+                <a href="mailto:kontakt@artkuchnie.pl">kontakt@artkuchnie.pl</a>
+              </div>
+            </div>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <strong>Adres</strong>
+                <span>ul. Polna 134, hala nr 3<br>87-100 Toruń</span>
+              </div>
+            </div>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </div>
+              <div>
+                <strong>Godziny otwarcia</strong>
+                <span>Poniedziałek - Piątek: 8:00 - 17:00<br>Sobota: po umówieniu</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-info-card">
+            <h3>Dane firmy</h3>
+            <p>
+              <strong>Art Kuchnie</strong><br>
+              NIP: 9562111620<br>
+              REGON: 389437853
+            </p>
+          </div>
+          
+          <div class="contact-info-card contact-info-card--accent">
+            <h3>Bezpłatna wycena</h3>
+            <p>
+              Zadzwoń lub napisz, opisz swoją wizję kuchni, a przygotujemy dla Ciebie 
+              indywidualną, bezpłatną wycenę. Bez żadnych zobowiązań.
+            </p>
+            <a href="tel:+48576376567" class="btn btn--white">
+              Zadzwoń teraz
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Lokalizacja</span>
+        <h2 class="section-title">Jak do nas trafić?</h2>
+        <p class="section-subtitle">
+          Nasz showroom i zakład produkcyjny znajduje się w Toruniu przy ulicy Polnej 134, hala nr 3.
+        </p>
+      </div>
+      
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.123456789!2d18.6!3d53.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDAxJzEyLjAiTiAxOMKwMzYnMDAuMCJF!5e0!3m2!1spl!2spl!4v1234567890"
+          width="100%" 
+          height="450" 
+          style="border:0; border-radius: 12px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  
+  .contact-form-wrapper h2 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .contact-form-intro {
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: #fff;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  .form-checkbox {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .form-checkbox input {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  
+  .form-checkbox label {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+  
+  .form-checkbox a {
+    color: var(--color-accent);
+  }
+  
+  .btn--full {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .contact-info-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border: 1px solid var(--color-border);
+  }
+  
+  .contact-info-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-info-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+  
+  .contact-info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .contact-info-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .contact-info-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(201, 162, 39, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .contact-info-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--color-accent);
+  }
+  
+  .contact-info-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .contact-info-item a,
+  .contact-info-item span {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+  
+  .contact-info-item a:hover {
+    color: var(--color-accent);
+  }
+  
+  .contact-info-card--accent {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+  
+  .contact-info-card--accent h3 {
+    color: #fff;
+  }
+  
+  .contact-info-card--accent p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.5rem;
+  }
+  
+  .map-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

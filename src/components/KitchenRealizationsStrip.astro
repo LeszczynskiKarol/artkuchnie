@@ -1,0 +1,139 @@
+---
+interface Props {
+  images: string[];
+  categoryName: string;
+  linkTo?: string;
+}
+const { images, categoryName, linkTo = '/realizacje/' } = Astro.props;
+---
+
+{images.length > 0 ? (
+  <div class="realizations-strip">
+    {images.length > 3 && (
+      <>
+        <button class="realizations-strip__btn realizations-strip__btn--prev" aria-label="Poprzednie">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="realizations-strip__btn realizations-strip__btn--next" aria-label="Następne">
+          <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </>
+    )}
+    
+    <div class="realizations-strip__track">
+      {images.map((img, i) => (
+        <div class="realizations-strip__item">
+          <img src={img} alt={`Realizacja ${i + 1}`} loading="lazy" />
+        </div>
+      ))}
+    </div>
+    
+    <div class="realizations-strip__cta">
+      <a href={linkTo} class="btn btn--primary">
+        {categoryName ? `Zobacz więcej realizacji ${categoryName}` : 'Zobacz wszystkie realizacje'}
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+      </a>
+    </div>
+  </div>
+) : (
+  <div class="realizations-strip__empty">
+    Dodaj linki do zdjęć realizacji w kodzie.
+  </div>
+)}
+
+<style>
+  .realizations-strip {
+    position: relative;
+    padding: 0 30px;
+  }
+  .realizations-strip__empty {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+  }
+  .realizations-strip__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e5e0d8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  .realizations-strip__btn:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .realizations-strip__btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #1a1a1a;
+  }
+  .realizations-strip__btn--prev { left: -10px; }
+  .realizations-strip__btn--next { right: -10px; }
+  
+  .realizations-strip__track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 0.5rem 0;
+  }
+  .realizations-strip__track::-webkit-scrollbar {
+    display: none;
+  }
+  .realizations-strip__item {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .realizations-strip__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .realizations-strip__item:hover img {
+    transform: scale(1.05);
+  }
+  .realizations-strip__cta {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .realizations-strip__cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .realizations-strip__cta svg {
+    width: 18px;
+    height: 18px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.realizations-strip').forEach(strip => {
+    const track = strip.querySelector('.realizations-strip__track') as HTMLElement;
+    const prevBtn = strip.querySelector('.realizations-strip__btn--prev');
+    const nextBtn = strip.querySelector('.realizations-strip__btn--next');
+    
+    prevBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+  });
+</script>

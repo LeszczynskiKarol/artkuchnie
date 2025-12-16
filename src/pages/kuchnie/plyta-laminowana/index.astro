@@ -1,0 +1,234 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI LAMINOWANYCH
+const LAMINOWANE_IMAGES = [
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198551-1_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198552-2_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198591-6_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198618-9_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198652-13_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198675-Clipboard_06-22-2025_03_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198694-Clipboard_06-22-2025_06_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198720-Clipboard_06-22-2025_09_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198783-Clipboard_06-22-2025_11_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198806-Clipboard_06-22-2025_13_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198819-Clipboard_06-22-2025_15_opt.webp",
+];
+---
+
+<Layout 
+  title="Kuchnie z płyty laminowanej Toruń | Art Kuchnie na wymiar"
+  description="Kuchnie z płyty laminowanej na wymiar w Toruniu. Solidne, praktyczne i w dobrej cenie. Ponad 200 wzorów do wyboru. Bezpłatna wycena!"
+  canonical="https://artkuchnie.pl/kuchnie/plyta-laminowana/"
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Rodzaje kuchni</span>
+      <h1 class="page-header__title">Kuchnie z płyty laminowanej</h1>
+      <p class="page-header__subtitle">
+        Najczęściej wybierane rozwiązanie i nie bez powodu. Dobra cena, setki wzorów, 
+        zero problemów z utrzymaniem. Klasyka, która po prostu działa.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kitchen-intro">
+        <div class="kitchen-intro__content">
+          <h2>O co chodzi z tym laminatem?</h2>
+          <p>
+            Płyta laminowana to po prostu płyta wiórowa oklejona trwałą folią dekoracyjną. 
+            Brzmi banalnie, ale diabeł tkwi w szczegółach – jakość laminatu, grubość folii, 
+            sposób oklejania krawędzi. My pracujemy z Eggerem i Kronospanen, bo wiemy że za 
+            rok czy pięć nie będziemy musieli tłumaczyć klientowi dlaczego mu się fronty łuszczą.
+          </p>
+          <p>
+            Laminat to nie jest "tańszy zamiennik czegoś lepszego". To osobna kategoria materiału 
+            z własnymi zaletami. Jest lekki, odporny na wilgoć, łatwy w czyszczeniu i – co ważne 
+            – można go wymieniać pojedynczo, jeśli kiedyś zechcesz odświeżyć wygląd kuchni.
+          </p>
+          <p>
+            Dla 70% naszych klientów to optymalny wybór. Nie dlatego, że nie stać ich na droższe 
+            rozwiązania, tylko dlatego, że laminat po prostu spełnia ich oczekiwania.
+          </p>
+        </div>
+        <div class="kitchen-intro__image">
+          <div style="background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%); aspect-ratio: 4/3; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #999;">
+            Zdjęcie kuchni laminowanej
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Bez owijania</span>
+        <h2 class="section-title">Dlaczego laminat ma sens</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Cena do budżetu</h3>
+          <p class="benefit-card__text">
+            Kuchnia laminowana kosztuje zauważalnie mniej niż lakierowana czy akrylowa. 
+            Różnica? Często kilka tysięcy złotych, które możesz wydać na lepszy sprzęt AGD 
+            albo po prostu zostawić w portfelu. Nie każdy musi mieć fronty za cenę używanego samochodu.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Wytrzymuje życie</h3>
+          <p class="benefit-card__text">
+            Dzieciak przyłożył zabawką? Wytrzyma. Plama z sosu? Zmywasz i po sprawie. 
+            Para z garnka? Laminat ma to gdzieś. Ten materiał powstał z myślą o prawdziwym 
+            użytkowaniu, nie o sesji zdjęciowej do katalogu.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Wzorów bez liku</h3>
+          <p class="benefit-card__text">
+            Ponad 200 dekorów w samym Eggerze. Drewno, kamień, beton, jednolite kolory, 
+            struktury – dosłownie wszystko. I nie mówimy o tandetnych imitacjach – współczesne 
+            laminaty potrafią zmylić nawet fachowca, szczególnie te z synchroniczną strukturą.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>Kilka rzeczy, które warto wiedzieć</h2>
+        
+        <h3>Laminat laminatowi nierówny</h3>
+        <p>
+          Jest laminat z marketu budowlanego za grosze i jest laminat z certyfikatem jakości 
+          od renomowanego producenta. Z zewnątrz mogą wyglądać podobnie, ale różnica wyjdzie 
+          po roku użytkowania. My pracujemy wyłącznie z materiałami klasy E1 (najniższa emisja 
+          formaldehydu) od sprawdzonych dostawców. Tak, to kosztuje więcej. Tak, warto.
+        </p>
+
+        <h3>Krawędzie to połowa sukcesu</h3>
+        <p>
+          Możesz mieć najlepszą płytę na świecie, ale jeśli krawędzie są źle oklejone – po 
+          dwóch latach zaczniesz narzekać. Stosujemy okleinę ABS 2mm klejoną na gorąco, 
+          z fazowaniem i polerowaniem. Kosztuje więcej niż tania taśma melamina, ale nie 
+          odkleja się i nie łuszczy.
+        </p>
+
+        <h3>Czy laminat nadaje się do kuchni z wyspą?</h3>
+        <p>
+          Jak najbardziej. Jedyne ograniczenie to brak możliwości gięcia frontów (jak np. 
+          w akrylu), ale proste formy geometryczne – bez problemu. Wyspa kuchenna z laminatem 
+          imitującym dąb czy beton wygląda świetnie i kosztuje ułamek ceny wyspy lakierowanej.
+        </p>
+
+        <h3>A co z wodą przy zlewie?</h3>
+        <p>
+          Laminat sam w sobie jest wodoodporny. Problem może pojawić się przy źle zabezpieczonych 
+          krawędziach lub wycięciach. Dlatego wszystkie miejsca narażone na kontakt z wodą 
+          (okolice zlewu, wyciecie pod baterię) uszczelniamy silikonem. Standardowa procedura, 
+          nie dodatkowa usługa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Proces</span>
+        <h2 class="section-title">Jak to wygląda w praktyce</h2>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Wybierasz dekor</h3>
+          <p class="process-step__text">
+            Przynosisz zdjęcia inspiracji albo przeglądamy razem próbniki. 
+            Podpowiemy co pasuje do Twojego wnętrza, co jest teraz w modzie, a co za chwilę wyjdzie z obiegu.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Mierzymy i projektujemy</h3>
+          <p class="process-step__text">
+            Przyjeżdżamy z miarką laserową, sprawdzamy piony i poziomy, 
+            rysujemy projekt. Bez pomiarów nie ma wyceny – nie zgadujemy.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Produkujemy</h3>
+          <p class="process-step__text">
+            Wszystko robimy u siebie w Toruniu. Formatowanie, okleinowanie, 
+            nawierty – od deski do gotowej szafki mija około 2 tygodni.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Montujemy</h3>
+          <p class="process-step__text">
+            Przywozimy, składamy, regulujemy, podłączamy. 
+            Wynosimy kartony i sprzątamy. Zostajesz z gotową kuchnią.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Realizacje Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title">Nasze realizacje kuchni laminowanych</h2>
+      </div>
+      <KitchenRealizationsStrip 
+        images={LAMINOWANE_IMAGES} 
+        categoryName="kuchni laminowanych"
+      />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Zainteresowany laminatem?</h2>
+      <p class="cta__text">
+        Zadzwoń lub napisz, powiedz ile masz miejsca i jaki masz budżet. 
+        Powiemy czy to ma sens i ile to będzie kosztować. Bez zobowiązań.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

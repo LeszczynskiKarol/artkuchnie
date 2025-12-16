@@ -1,0 +1,264 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI FORNIROWANYCH
+const FORNIR_IMAGES = [
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274065-1_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274082-4_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274096-6_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274123-9_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274135-11_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274148-Clipboard_06-22-2025_152_opt.webp",
+    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274153-Clipboard_06-22-2025_153_opt.webp",
+];
+---
+
+<Layout 
+  title="Kuchnie z fornirem Toruń | Art Kuchnie na wymiar - Fronty fornirowane"
+  description="Kuchnie z fornirem na wymiar w Toruniu. Prawdziwe drewno – dąb, orzech, jesion. Naturalna elegancja. Bezpłatna wycena!"
+  canonical="https://artkuchnie.pl/kuchnie/fornir/"
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Rodzaje kuchni</span>
+      <h1 class="page-header__title">Kuchnie z fornirem</h1>
+      <p class="page-header__subtitle">
+        Prawdziwe drewno, prawdziwy charakter. Nie imitacja, nie naklejka – 
+        cienka warstwa naturalnego drewna z całą jego urodą i niedoskonałościami.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kitchen-intro">
+        <div class="kitchen-intro__content">
+          <h2>Fornir – czyli co właściwie?</h2>
+          <p>
+            Fornir to arkusz prawdziwego drewna o grubości 0,5-3mm, uzyskany przez 
+            struganie lub krajanie pnia. Okleja się nim płyty MDF lub sklejkę, 
+            uzyskując mebel o wyglądzie litego drewna za ułamek jego ceny i wagi.
+          </p>
+          <p>
+            Kluczowa różnica między fornirem a laminatem imitującym drewno? Fornir 
+            JEST drewnem. Ma naturalne słoje, sęki, różnice w odcieniu między 
+            arkuszami. Laminat jest zawsze identyczny – fornir nigdy. Każdy front 
+            jest unikatowy, jak odcisk palca.
+          </p>
+          <p>
+            To wybór dla osób, które cenią autentyczność. Fornir starzeje się 
+            szlachetnie – z czasem nabiera patyny, ciemnieje, opowiada historię. 
+            Syntetyczne materiały po prostu się zużywają.
+          </p>
+        </div>
+        <div class="kitchen-intro__image">
+          <div style="background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%); aspect-ratio: 4/3; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #999;">
+            Zdjęcie kuchni fornirowanej
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Charakter</span>
+        <h2 class="section-title">Dlaczego fornir jest wyjątkowy</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 15h2v2h-2zm0-8h2v6h-2z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">100% naturalne</h3>
+          <p class="benefit-card__text">
+            Patrzysz na prawdziwe drewno, dotykasz prawdziwego drewna, wąchasz 
+            prawdziwe drewno. Zero plastiku, zero chemii imitującej naturę. 
+            W dobie sztuczności – fornir to powrót do źródeł.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Każdy front inny</h3>
+          <p class="benefit-card__text">
+            Dwa arkusze forniru z tego samego drzewa będą się różnić. To nie wada, 
+            to zaleta. Twoja kuchnia jest jedyna na świecie – dosłownie. Nikt nie 
+            ma takich samych słojów, bo takie same słoje nie istnieją.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Ciepło wnętrza</h3>
+          <p class="benefit-card__text">
+            Drewno daje poczucie ciepła, którego nie da żaden syntetyk. Kuchnia 
+            z fornirem jest przytulna, przyjazna, zachęca do spędzania w niej 
+            czasu. To nie tylko funkcjonalna przestrzeń – to serce domu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>Gatunki drewna, które oferujemy</h2>
+        
+        <h3>Dąb naturalny</h3>
+        <p>
+          Król wśród fornirów. Charakterystyczne, wyraziste słoje, ciepły kolor 
+          od miodowego po złocisty. Pasuje do kuchni w każdym stylu – od 
+          skandynawskiej prostoty po rustykalną tradycję. Twardy, odporny, ponadczasowy.
+        </p>
+
+        <h3>Orzech amerykański</h3>
+        <p>
+          Ciemny, elegancki, wyrafinowany. Głęboki brąz z delikatnym fioletowym 
+          podtonem. Fornir dla osób, które chcą kuchni z pazurem. Świetnie 
+          wygląda w dużych przestrzeniach z dobrym światłem.
+        </p>
+
+        <h3>Jesion</h3>
+        <p>
+          Jasny, z wyrazistym, równoległym rysunkiem słojów. Nowoczesny, 
+          skandynawski charakter. Idealny do małych kuchni – optycznie 
+          powiększa przestrzeń. Lżejszy wizualnie niż dąb.
+        </p>
+
+        <h3>Inne gatunki</h3>
+        <p>
+          Na zamówienie możemy wykonać fornir z buku, klonu, wiśni, mahoniu 
+          i innych gatunków. Jeśli masz konkretne życzenie – zapytaj. 
+          Dostęp do egzotycznych fornirów trwa dłużej, ale jest możliwy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="content-section">
+        <h2>O czym warto wiedzieć przed zakupem</h2>
+        
+        <h3>Fornir to nie laminat</h3>
+        <p>
+          Naturalne drewno reaguje na wilgoć i temperaturę. Dlatego ważne jest 
+          odpowiednie wykończenie lakierem ochronnym i poprawna wentylacja 
+          przy sprzęcie grzewczym. Robimy to standardowo – nie musisz prosić.
+        </p>
+
+        <h3>Słońce zmienia kolor</h3>
+        <p>
+          Fornir wystawiony na słońce będzie ciemniał lub jaśniał (zależnie 
+          od gatunku). To naturalne – drewno żyje. Jeśli masz bardzo słoneczną 
+          kuchnię, rozważ rolety lub wybierz gatunek mniej wrażliwy na UV.
+        </p>
+
+        <h3>Różnice między arkuszami</h3>
+        <p>
+          Każdy arkusz forniru jest inny. Staramy się dobierać arkusze podobne 
+          do siebie, ale idealna jednolitość jest niemożliwa. Jeśli zależy 
+          Ci na 100% spójności – fornir nie jest dla Ciebie.
+        </p>
+
+        <h3>Cena vs laminat</h3>
+        <p>
+          Kuchnia fornirowana kosztuje więcej niż laminowana – to materiał 
+          naturalny, wymagający obróbki ręcznej. Ale mniej niż lakierowana 
+          czy akrylowa. Stosunek jakości do ceny jest bardzo dobry.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Realizacja</span>
+        <h2 class="section-title">Jak powstaje kuchnia fornirowana</h2>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Wybór gatunku</h3>
+          <p class="process-step__text">
+            Pokazujemy próbki różnych gatunków drewna – możesz dotknąć, 
+            porównać, zobaczyć jak wyglądają w różnym świetle.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Dobór arkuszy</h3>
+          <p class="process-step__text">
+            Wybieramy arkusze forniru podobne do siebie pod względem koloru 
+            i rysunku. Układamy je tak, żeby tworzyły spójną kompozycję.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Okleinowanie i lakierowanie</h3>
+          <p class="process-step__text">
+            Fornir kleimy na płytę MDF, szlifujemy, lakierujemy warstwami 
+            ochronnymi. Proces trwa dłużej niż przy laminacie – jakość wymaga czasu.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Montaż</h3>
+          <p class="process-step__text">
+            Montujemy z zachowaniem ciągłości słojów między sąsiednimi 
+            frontami. To wymaga planowania – dlatego projekt jest tak ważny.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Realizacje Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title">Nasze realizacje kuchni fornirowanych</h2>
+      </div>
+      <KitchenRealizationsStrip 
+        images={FORNIR_IMAGES} 
+        categoryName="kuchni fornirowanych"
+      />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Cenisz naturalne materiały?</h2>
+      <p class="cta__text">
+        Porozmawiajmy o kuchni fornirowanej. Pokażemy próbki, 
+        opowiemy o różnicach między gatunkami, policzymy koszty.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

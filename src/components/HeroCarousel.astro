@@ -1,0 +1,211 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="hero-carousel" data-images={JSON.stringify(images)}>
+  {images.length > 0 ? (
+    <div class="hero-carousel__container">
+      {images.map((img, i) => (
+        <img 
+          src={img} 
+          alt={`Realizacja ${i + 1}`} 
+          class={`hero-carousel__slide ${i === 0 ? 'active' : ''}`}
+          data-index={i}
+        />
+      ))}
+      
+      {images.length > 1 && (
+        <>
+          <button class="hero-carousel__btn hero-carousel__btn--prev" aria-label="Poprzednie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="hero-carousel__btn hero-carousel__btn--next" aria-label="Następne">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <div class="hero-carousel__dots">
+            {images.map((_, i) => (
+              <button class={`hero-carousel__dot ${i === 0 ? 'active' : ''}`} data-index={i}></button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  ) : (
+    <div class="hero-carousel__placeholder">
+      Dodaj zdjęcia realizacji
+    </div>
+  )}
+  
+  <div class="hero-carousel__badge">
+    <div class="hero-carousel__badge-icon">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div>
+      <div class="hero-carousel__badge-text">Bezpłatna wycena</div>
+      <div class="hero-carousel__badge-subtext">Bez zobowiązań</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-carousel {
+    position: relative;
+    border-radius: 16px;
+    overflow: visible;
+  }
+  .hero-carousel__container {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .hero-carousel__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .hero-carousel__slide.active {
+    opacity: 1;
+  }
+  .hero-carousel__placeholder {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.25rem;
+  }
+  .hero-carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  .hero-carousel__btn:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .hero-carousel__btn svg {
+    width: 24px;
+    height: 24px;
+    color: #1a1a1a;
+  }
+  .hero-carousel__btn--prev { left: 16px; }
+  .hero-carousel__btn--next { right: 16px; }
+  .hero-carousel__dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+  .hero-carousel__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .hero-carousel__dot.active {
+    width: 24px;
+    background: var(--color-accent);
+  }
+  .hero-carousel__badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 20;
+  }
+  .hero-carousel__badge-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-carousel__badge-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .hero-carousel__badge-text {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  .hero-carousel__badge-subtext {
+    font-size: 0.8125rem;
+    color: #666;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.hero-carousel') as HTMLElement;
+    if (!carousel) return;
+    
+    const slides = carousel.querySelectorAll('.hero-carousel__slide');
+    const dots = carousel.querySelectorAll('.hero-carousel__dot');
+    const prevBtn = carousel.querySelector('.hero-carousel__btn--prev');
+    const nextBtn = carousel.querySelector('.hero-carousel__btn--next');
+    
+    if (slides.length <= 1) return;
+    
+    let current = 0;
+    let interval: number;
+    
+    const goTo = (index: number) => {
+      slides[current].classList.remove('active');
+      dots[current]?.classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current]?.classList.add('active');
+    };
+    
+    const startAuto = () => {
+      interval = setInterval(() => goTo(current + 1), 5000);
+    };
+    
+    const stopAuto = () => clearInterval(interval);
+    
+    prevBtn?.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    nextBtn?.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+    });
+    
+    startAuto();
+  });
+</script>

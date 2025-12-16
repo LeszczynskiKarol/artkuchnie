@@ -1,0 +1,231 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI MIESZANYCH
+const MIESZANE_IMAGES = [
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972626-1_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972642-4_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972667-Clipboard_06-22-2025_145_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972679-Clipboard_06-22-2025_148_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972689-Clipboard_06-22-2025_150_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972705-Clipboard_06-22-2025_155_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972729-Clipboard_06-22-2025_158_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972745-Clipboard_06-22-2025_161_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972768-Clipboard_06-22-2025_164_opt.webp",
+];
+---
+
+<Layout 
+  title="Kuchnie akryl/lakier + płyta Toruń | Art Kuchnie na wymiar"
+  description="Kuchnie mieszane akryl/lakier + płyta w Toruniu. Sprytne połączenie premium z ekonomią. Efekt wow w rozsądnej cenie. Bezpłatna wycena!"
+  canonical="https://artkuchnie.pl/kuchnie/akryl-lakier-plyta/"
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Rodzaje kuchni</span>
+      <h1 class="page-header__title">Kuchnie akryl/lakier + płyta</h1>
+      <p class="page-header__subtitle">
+        Sprytna strategia dla osób z gustem i głową do liczb. Materiały premium tam, 
+        gdzie je widać, ekonomia tam, gdzie liczy się funkcja.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kitchen-intro">
+        <div class="kitchen-intro__content">
+          <h2>Na czym polega ten trick?</h2>
+          <p>
+            Pomysł jest prosty: nie wszystkie elementy kuchni są jednakowo widoczne. 
+            Wysokie fronty przy lodówce i piecu? Widzisz je cały czas. Dolne szafki 
+            przy podłodze? Prawie nigdy. Wyspa kuchenna? Jest centralnym punktem. 
+            Szuflady pod blatem? Otwierasz, zamykasz, nie patrzysz.
+          </p>
+          <p>
+            Strategia mix polega na użyciu droższych materiałów (akryl, lakier) 
+            w miejscach eksponowanych, a tańszych (laminat) w miejscach drugorzędnych. 
+            Efekt końcowy wygląda jak kuchnia premium – bo te elementy, które widzisz, 
+            SĄ premium. A płacisz 20-30% mniej.
+          </p>
+          <p>
+            To nie jest oszukiwanie samego siebie. To mądre zarządzanie budżetem. 
+            Wielu architektów wnętrz stosuje tę technikę – i teraz Ty też możesz.
+          </p>
+        </div>
+        <div class="kitchen-intro__image">
+          <div style="background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%); aspect-ratio: 4/3; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #999;">
+            Zdjęcie kuchni mieszanej
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Korzyści</span>
+        <h2 class="section-title">Dlaczego to działa</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Oszczędność z sensem</h3>
+          <p class="benefit-card__text">
+            Nie chodzi o oszczędzanie na wszystkim – chodzi o oszczędzanie tam, gdzie 
+            to nie wpływa na efekt końcowy. Szuflada na garnki w lakierze czy laminacie? 
+            Nikt nie zauważy różnicy. Wysoka zabudowa w lakierze czy laminacie? Wszyscy zauważą.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Design przez kontrast</h3>
+          <p class="benefit-card__text">
+            Mieszanie materiałów to nie tylko oszczędność – to też element designu. 
+            Połyskliwa wyspa na tle matowych korpusów. Lakierowane fronty górne i 
+            drewniane dolne. Świadome zestawienie faktur i wykończeń wygląda lepiej 
+            niż monotonna całość.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Praktyczność</h3>
+          <p class="benefit-card__text">
+            Dolne szafki są bardziej narażone na uszkodzenia – kopnięcia, uderzenia 
+            mopa, zalewanie wodą. Laminat w tych miejscach to nie kompromis, to 
+            rozsądek. Łatwiej wymienić tani front niż płakać nad zarysowanym akrylem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>Popularne kombinacje materiałów</h2>
+        
+        <h3>Podział góra-dół</h3>
+        <p>
+          Najbardziej klasyczne rozwiązanie: górne szafki w lakierze lub akrylu, 
+          dolne w laminacie. Wzrok naturalnie kieruje się w górę – tam umieszczamy 
+          premium. Dół i tak często zakrywa blat, więc nie ma sensu przepłacać.
+        </p>
+
+        <h3>Wyspa jako accent</h3>
+        <p>
+          Cała kuchnia w laminacie, ale wyspa – w akrylu lub lakierze w kontrastowym 
+          kolorze. Wyspa jest centralnym punktem, przyciąga wzrok, więc tam inwestujemy. 
+          Efekt? Kuchnia wygląda na znacznie droższą niż jest.
+        </p>
+
+        <h3>Wysoka zabudowa premium</h3>
+        <p>
+          Zabudowa z lodówką, piekarnikiem, spiżarnią – to elementy, które widzisz 
+          wchodząc do kuchni. Zrób je w lakierze lub akrylu, resztę w laminacie. 
+          Goście nie zaglądają pod blat – zaglądają na wysoką zabudowę.
+        </p>
+
+        <h3>Jeden materiał, dwa kolory</h3>
+        <p>
+          Czasem mix to nie kwestia materiału, a kolorystyki. Frontowe elementy 
+          w jednym kolorze (np. biały połysk), boczne i wewnętrzne w drugim 
+          (np. szary mat). Ten sam laminat, ale dwa dekory – też działa świetnie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Jak to robimy</span>
+        <h2 class="section-title">Proces projektowania kuchni mix</h2>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Analiza przestrzeni</h3>
+          <p class="process-step__text">
+            Patrzymy na kuchnię z różnych punktów – wejście, strefa jadalna, 
+            miejsce przy blacie. Ustalamy co widać, co nie widać, co przyciąga wzrok.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Dobór materiałów</h3>
+          <p class="process-step__text">
+            Wybieramy materiały tak, żeby do siebie pasowały. Laminat musi 
+            współgrać z lakierem – podobna tonacja, spójny styl.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Wycena porównawcza</h3>
+          <p class="process-step__text">
+            Pokazujemy ile kosztuje kuchnia cała premium, cała laminat, 
+            i mix. Widzisz różnice, decydujesz sam.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Realizacja</h3>
+          <p class="process-step__text">
+            Produkcja i montaż jak zwykle – z tą różnicą, że łączymy 
+            elementy z różnych źródeł w jedną spójną całość.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Realizacje Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title">Nasze realizacje kuchni mieszanych</h2>
+      </div>
+      <KitchenRealizationsStrip 
+        images={MIESZANE_IMAGES} 
+        categoryName="kuchni mieszanych"
+      />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Chcesz policzyć oszczędności?</h2>
+      <p class="cta__text">
+        Opowiedz o swojej kuchni – przygotujemy wycenę w trzech wariantach: 
+        premium, ekonomiczny i mix. Zobaczysz liczby, podejmiesz decyzję.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

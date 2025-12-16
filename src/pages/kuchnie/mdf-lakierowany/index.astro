@@ -1,0 +1,233 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI LAKIEROWANYCH
+const LAKIEROWANE_IMAGES = [
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098361-Clipboard_06-22-2025_02_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098372-Clipboard_06-22-2025_04_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098382-Clipboard_06-22-2025_06_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098397-Clipboard_06-22-2025_08_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098419-Clipboard_06-22-2025_63_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098447-Clipboard_06-22-2025_66_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098468-Clipboard_06-22-2025_69_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098492-Clipboard_06-22-2025_72_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098515-Clipboard_06-22-2025_75_opt.webp",
+  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098537-Clipboard_06-22-2025_77_opt.webp",
+];
+---
+
+<Layout 
+  title="Kuchnie MDF lakierowany Toruń | Art Kuchnie na wymiar"
+  description="Kuchnie MDF lakierowany na wymiar w Toruniu. Fronty lakierowane w dowolnym kolorze RAL. Mat lub połysk. Bezpłatna wycena!"
+  canonical="https://artkuchnie.pl/kuchnie/mdf-lakierowany/"
+>
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Rodzaje kuchni</span>
+      <h1 class="page-header__title">Kuchnie MDF lakierowany</h1>
+      <p class="page-header__subtitle">
+        Gładkie fronty w dokładnie takim kolorze, jaki sobie wymarzysz. 
+        Mat dla fanów stonowanej elegancji, połysk dla tych, którzy lubią efekt wow.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kitchen-intro">
+        <div class="kitchen-intro__content">
+          <h2>Lakier na MDF – o co w tym chodzi?</h2>
+          <p>
+            MDF to płyta z włókien drzewnych – gęsta, jednorodna, idealna pod lakierowanie. 
+            Nakładamy na nią kilka warstw lakieru, szlifujemy między warstwami, polerujemy 
+            na koniec. Rezultat? Powierzchnia gładka jak szyba, w kolorze który sam wybierzesz 
+            z palety RAL – ponad 200 odcieni do dyspozycji.
+          </p>
+          <p>
+            To rozwiązanie dla osób, które mają konkretną wizję kolorystyczną i nie chcą 
+            iść na kompromis. Szukasz granatu, który idealnie pasuje do płytek w łazience? 
+            Zieleni dokładnie takiej jak w ulubionym fotelu? Z lakierem to możliwe.
+          </p>
+          <p>
+            Lakierowanie to też jedyny sposób na uzyskanie idealnie białych frontów bez 
+            widocznej struktury. Biały laminat zawsze ma jakąś fakturę – biały lakier jest 
+            po prostu biały i gładki.
+          </p>
+        </div>
+        <div class="kitchen-intro__image">
+          <div style="background: linear-gradient(135deg, #e8e4df 0%, #d4cfc7 100%); aspect-ratio: 4/3; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #999;">
+            Zdjęcie kuchni lakierowanej
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Konkrety</span>
+        <h2 class="section-title">Co dostajesz z lakierem</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Dowolny kolor</h3>
+          <p class="benefit-card__text">
+            Paleta RAL to tylko początek. Możemy dolakierować próbkę, którą przyniesiesz – 
+            kawałek tkaniny, zdjęcie, cokolwiek. System komputerowego doboru koloru pozwala 
+            odwzorować praktycznie każdy odcień. Twoja kuchnia, Twój kolor.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Mat albo połysk</h3>
+          <p class="benefit-card__text">
+            Mat (satyna) – stonowany, nowoczesny, nie zbiera odcisków palców. Połysk (gloss) – 
+            efektowny, odbija światło, optycznie powiększa przestrzeń, ale wymaga częstszego 
+            przecierania. Możesz też mieszać – np. korpusy mat, fronty połysk.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg>
+          </div>
+          <h3 class="benefit-card__title">Naprawialne</h3>
+          <p class="benefit-card__text">
+            Zarysowałeś front? Odprysk od uderzenia? Lakier można naprawić – przeszlifować, 
+            dolakierować, wypolerować. Spróbuj to zrobić z laminatem. W przypadku większych 
+            uszkodzeń relakierujemy cały front – i jest jak nowy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h2>Szczerze o lakierze</h2>
+        
+        <h3>To nie jest najtańsza opcja</h3>
+        <p>
+          Lakierowanie to pracochłonny proces – gruntowanie, kilka warstw lakieru, szlifowanie 
+          międzywarstwowe, polerowanie. Każdy front przechodzi przez ręce lakiernika kilka razy. 
+          Dlatego kuchnia lakierowana kosztuje więcej niż laminowana. Jeśli budżet jest napięty, 
+          lepiej wybrać dobry laminat niż oszczędzać na jakości lakieru.
+        </p>
+
+        <h3>Połysk wymaga opieki</h3>
+        <p>
+          Błyszczące fronty wyglądają spektakularnie – na zdjęciach i tuż po montażu. W codziennym 
+          użytkowaniu zbierają odciski palców, smugi po ściereczce, każdy pyłek widać z metra. 
+          Jeśli nie lubisz codziennego przecierania – wybierz mat. Poważnie.
+        </p>
+
+        <h3>Jakość lakieru ma znaczenie</h3>
+        <p>
+          Tani lakier żółknie po roku, pęka przy temperaturze, łuszczy się przy wilgoci. 
+          My używamy lakierów poliuretanowych utwardzanych, które wytrzymują warunki kuchenne 
+          bez problemu. Kosztują więcej, ale po to płacisz za lakierowane fronty – żeby wyglądały 
+          tak samo za pięć lat.
+        </p>
+
+        <h3>Białe fronty to osobna kategoria</h3>
+        <p>
+          Jeśli chcesz białą kuchnię – lakier to najlepsza opcja. Żaden laminat nie da Ci takiej 
+          czystości bieli i gładkości powierzchni. Ale uwaga: biały połysk w kuchni to hardcore. 
+          Każda plama, każdy odcisk, każda kropla wody. Mat jest znacznie bardziej wybaczający.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Realizacja</span>
+        <h2 class="section-title">Od pomysłu do lakierowanej kuchni</h2>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Ustalamy kolor</h3>
+          <p class="process-step__text">
+            Wybierasz z palety RAL albo przynosisz próbkę do dopasowania. 
+            Robimy próbnik lakieru do akceptacji zanim ruszymy z produkcją.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Projektujemy</h3>
+          <p class="process-step__text">
+            Rysujemy kuchnię, wybieramy uchwyty (albo system bezuchwytowy), 
+            omawiamy wykończenie – mat, półmat, połysk.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Lakierujemy</h3>
+          <p class="process-step__text">
+            Fronty idą do lakierni – gruntowanie, lakierowanie, suszenie, 
+            szlifowanie, kolejna warstwa. Cały proces trwa około 2-3 tygodni.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Montujemy</h3>
+          <p class="process-step__text">
+            Lakierowane fronty pakujemy w folię ochronną i montujemy z wyjątkową 
+            ostrożnością. Zdejmujemy zabezpieczenia dopiero na sam koniec.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Realizacje Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeria</span>
+        <h2 class="section-title">Nasze realizacje kuchni lakierowanych</h2>
+      </div>
+      <KitchenRealizationsStrip 
+        images={LAKIEROWANE_IMAGES} 
+        categoryName="kuchni lakierowanych"
+      />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Masz wizję kolorystyczną?</h2>
+      <p class="cta__text">
+        Porozmawiajmy o lakierowanych frontach. Powiedz jaki kolor, jakie wykończenie, 
+        jaki budżet – przygotujemy wycenę i próbkę koloru do akceptacji.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

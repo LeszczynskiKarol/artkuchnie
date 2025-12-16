@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://artkuchnie.pl/sitemap.xml

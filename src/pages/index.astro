@@ -1,0 +1,327 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
+import KitchenRealizationsStrip from '../components/KitchenRealizationsStrip.astro';
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ CAROUSEL (HERO)
+const HERO_IMAGES = [
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198552-2_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876419-Clipboard_06-22-2025_214_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972729-Clipboard_06-22-2025_158_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098372-Clipboard_06-22-2025_05_opt.webp',
+];
+
+// TUTAJ WSTAW LINKI DO ZDJĘĆ REALIZACJI (STRIP NA GŁÓWNEJ)
+const REALIZACJE_IMAGES = [
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274106-7_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098397-Clipboard_06-22-2025_08_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531761-Meble-66-1_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972718-Clipboard_06-22-2025_157_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876640-Clipboard_06-22-2025_244_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198849-Clipboard_06-22-2025_19_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876716-Clipboard_06-22-2025_257_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393973038-Clipboard_06-22-2025_195_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531715-kmali-6-1_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098419-Clipboard_06-22-2025_63_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098525-Clipboard_06-22-2025_76_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098544-Clipboard_06-22-2025_78_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274106-7_opt.webp',
+  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198944-Clipboard_06-22-2025_33_opt.webp'
+];
+
+const services = [
+  {
+    title: "Kuchnie z płyty laminowanej",
+    description: "Sprawdzone rozwiązanie dla pragmatyków. Setki wzorów od wiodących producentów, łatwa pielęgnacja i konkurencyjna cena bez kompromisów w kwestii wyglądu.",
+    href: "/kuchnie/plyta-laminowana/",
+    icon: "layers"
+  },
+  {
+    title: "Kuchnie MDF lakierowany",
+    description: "Perfekcyjnie gładkie fronty w dowolnym kolorze RAL. Wybierz wykończenie matowe dla stonowanej elegancji lub połysk dla efektu wow.",
+    href: "/kuchnie/mdf-lakierowany/",
+    icon: "paint"
+  },
+  {
+    title: "Kuchnie akrylowe",
+    description: "Segment premium dla koneserów. Głębia koloru niemożliwa do osiągnięcia innymi metodami, powierzchnia jak tafla szkła, odporność na lata.",
+    href: "/kuchnie/akrylowe/",
+    icon: "sparkle"
+  },
+  {
+    title: "Kuchnie akryl/lakier + płyta",
+    description: "Sprytna kombinacja dla osób z gustem i rozsądkiem. Premium tam, gdzie widać, ekonomia tam, gdzie liczy się funkcja.",
+    href: "/kuchnie/akryl-lakier-plyta/",
+    icon: "combine"
+  },
+  {
+    title: "Kuchnie z fornirem",
+    description: "Prawdziwe drewno, prawdziwy charakter. Dąb, orzech, jesion – każdy front jest unikalny dzięki naturalnemu rysunkowi słojów.",
+    href: "/kuchnie/fornir/",
+    icon: "tree"
+  },
+  {
+    title: "Kuchnie z blatami HPL",
+    description: "Blaty stworzone do pracy. Stawiaj gorące garnki, krój bez deski, myj czym chcesz – HPL to zniesie bez mrugnięcia okiem.",
+    href: "/kuchnie/blaty-hpl/",
+    icon: "shield"
+  }
+];
+---
+
+<Layout 
+  title="Kuchnie na wymiar Toruń | Projektowanie, Montaż, Produkcja - ArtKuchnie.pl"
+  description="Kuchnie na wymiar w Toruniu. Projektujemy, produkujemy i montujemy meble kuchenne najwyższej jakości. Ponad 10 lat doświadczenia. Bezpłatna wycena!"
+  canonical="https://artkuchnie.pl/"
+>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__label">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Toruń i okolice
+          </span>
+          <h1 class="hero__title">
+            Kuchnie na wymiar<br><span>w dobrym stylu</span>
+          </h1>
+          <p class="hero__text">
+            Projektujemy i budujemy kuchnie, które naprawdę działają. Bez ściemy o "wymarzonej przestrzeni" – 
+            dostaniesz solidne meble dopasowane do Twojego mieszkania, stylu życia i budżetu. 
+            Od pierwszego szkicu po ostatnią śrubę – wszystko robimy sami w Toruniu.
+          </p>
+          <div class="hero__buttons">
+            <a href="tel:+48576376567" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Pogadajmy o kuchni
+            </a>
+            <a href="/realizacje/" class="btn btn--outline">Zobacz co robimy</a>
+          </div>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-number">10+</div>
+              <div class="hero__stat-label">lat w branży</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number">500+</div>
+              <div class="hero__stat-label">zamontowanych kuchni</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number">4.9</div>
+              <div class="hero__stat-label">średnia ocen Google</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__image">
+          <HeroCarousel images={HERO_IMAGES} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Nasza oferta</span>
+        <h2 class="section-title">Rodzaje kuchni na wymiar</h2>
+        <p class="section-subtitle">
+          Oferujemy szeroki wybór materiałów i wykończeń, które pozwolą stworzyć kuchnię idealnie dopasowaną 
+          do Twojego stylu życia, gustu i budżetu. Każdy projekt traktujemy indywidualnie.
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.href} class="service-card">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24">
+                {service.icon === 'layers' && <path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"/>}
+                {service.icon === 'paint' && <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>}
+                {service.icon === 'sparkle' && <path d="M12 3L9 12l-9 3 9 3 3 9 3-9 9-3-9-3-3-9z"/>}
+                {service.icon === 'combine' && <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h2v5H7zm4-3h2v8h-2zm4-3h2v11h-2z"/>}
+                {service.icon === 'tree' && <path d="M12 2L4 12h3v8h10v-8h3L12 2zm1 14h-2v-4h2v4z"/>}
+                {service.icon === 'shield' && <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>}
+              </svg>
+            </div>
+            <h3 class="service-card__title">{service.title}</h3>
+            <p class="service-card__text">{service.description}</p>
+            <span class="service-card__link">
+              Dowiedz się więcej
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Dlaczego my</span>
+        <h2 class="section-title">Jak pracujemy</h2>
+        <p class="section-subtitle">
+          Robimy to od lat i wiemy, co się sprawdza. Żadnych niespodzianek, żadnych haczyków w umowie – 
+          prosta współpraca z ekipą, która zna się na rzeczy.
+        </p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+          </div>
+          <h3 class="value-item__title">Konkretna wycena</h3>
+          <p class="value-item__text">
+            Podana cena to cena ostateczna. Nie dorzucamy "nieprzewidzianych kosztów" w trakcie realizacji. 
+            Przed startem wiesz dokładnie, ile zapłacisz – i tyle płacisz. Jeśli coś się zmieni z Twojej inicjatywy, 
+            od razu mówimy ile to kosztuje.
+          </p>
+        </div>
+        
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z"/></svg>
+          </div>
+          <h3 class="value-item__title">Materiały z głową</h3>
+          <p class="value-item__text">
+            Pracujemy z Eggerem, Kronospanen, Rehau i innymi sprawdzonymi markami. 
+            Nie wciskamy Ci najtańszych zamienników pod hasłem "to samo, tylko taniej". 
+            Jeśli czegoś nie polecamy – mówimy wprost dlaczego.
+          </p>
+        </div>
+        
+        <div class="value-item">
+          <div class="value-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <h3 class="value-item__title">Terminy to świętość</h3>
+          <p class="value-item__text">
+            Ustaliliśmy datę montażu? To w tym dniu przyjeżdżamy. Jeśli z jakiegoś powodu nie możemy dotrzymać 
+            terminu (co zdarza się rzadko), informujemy z wyprzedzeniem. Nie każemy Ci brać urlopu "na wszelki wypadek".
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Od pomysłu do kuchni</span>
+        <h2 class="section-title">4 kroki do nowej kuchni</h2>
+        <p class="section-subtitle">
+          Bez zbędnej biurokracji i przeciągania. Zazwyczaj od pierwszego kontaktu 
+          do gotowej kuchni mija 4-8 tygodni, zależnie od złożoności projektu.
+        </p>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Rozmowa i wycena</h3>
+          <p class="process-step__text">
+            Dzwonisz lub piszesz, opowiadasz co potrzebujesz. Jeśli masz wymiary – super, 
+            jeśli nie – przyjedziemy zmierzyć. Wycena gratis, bez zobowiązań.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Projekt</h3>
+          <p class="process-step__text">
+            Rysujemy Twoją kuchnię, dobieramy materiały, omawiamy szczegóły. 
+            Masz swój projekt? Też dobrze – zrealizujemy go wiernie lub podpowiemy co poprawić.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Produkcja</h3>
+          <p class="process-step__text">
+            Wszystko robimy u siebie w Toruniu – cięcie, oklejanie, składanie. 
+            Żadnych pośredników, żadnego czekania na dostawy z drugiego końca Polski.
+          </p>
+        </div>
+        
+        <div class="process-step">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Montaż</h3>
+          <p class="process-step__text">
+            Przywozimy, montujemy, regulujemy, sprzątamy po sobie. 
+            Wychodzimy dopiero gdy wszystko działa i jesteś zadowolony.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Realizacje Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Nasze prace</span>
+        <h2 class="section-title">Realizacje</h2>
+        <p class="section-subtitle">
+          Zobacz kuchnie, które ostatnio zamontowaliśmy. Każda inna, każda dopasowana do konkretnego klienta.
+        </p>
+      </div>
+      
+      <KitchenRealizationsStrip 
+        images={REALIZACJE_IMAGES} 
+        categoryName=""
+        linkTo="/realizacje/"
+      />
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Opinie klientów</span>
+        <h2 class="section-title">Co mówią o nas klienci?</h2>
+      </div>
+      
+      <GoogleReviews />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Porozmawiajmy o Twojej kuchni</h2>
+      <p class="cta__text">
+        Bez sprzedażowych sztuczek, bez "ofert ważnych tylko dziś". 
+        Zadzwoń, napisz, opowiedz czego szukasz. Jeśli możemy pomóc – powiemy jak. 
+        Jeśli nie – też powiemy wprost.
+      </p>
+      <div class="cta__buttons">
+        <a href="tel:+48576376567" class="btn btn--white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          576 376 567
+        </a>
+        <a href="mailto:kontakt@artkuchnie.pl" class="btn btn--outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+          kontakt@artkuchnie.pl
+        </a>
+      </div>
+      <div class="cta__contact">
+        <div class="cta__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>ul. Polna 134, hala 3 – Toruń</span>
+        </div>
+        <div class="cta__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          <span>Pn-Pt: 8:00 – 17:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

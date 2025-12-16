@@ -1,0 +1,259 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="gallery" data-images={JSON.stringify(images)}>
+  {images.length === 0 ? (
+    <div class="gallery__empty">
+      Brak zdjęć do wyświetlenia. Dodaj linki do zdjęć w kodzie.
+    </div>
+  ) : (
+    <div class="gallery__grid">
+      {images.map((img, i) => (
+        <div class="gallery__item" data-index={i}>
+          <img src={img} alt={`Realizacja ${i + 1}`} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+<!-- Modal -->
+<div class="modal" id="galleryModal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <button class="modal__close" aria-label="Zamknij">
+      <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <div class="modal__counter"><span class="modal__current">1</span> / <span class="modal__total">1</span></div>
+    <button class="modal__nav modal__nav--prev" aria-label="Poprzednie">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <div class="modal__image-container">
+      <img class="modal__image" src="" alt="" />
+    </div>
+    <button class="modal__nav modal__nav--next" aria-label="Następne">
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+    <div class="modal__thumbnails"></div>
+  </div>
+</div>
+
+<style>
+  .gallery__empty {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+  }
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .gallery__item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .gallery__item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    background: rgba(0,0,0,0.95);
+  }
+  .modal.active {
+    display: block;
+  }
+  .modal__overlay {
+    position: absolute;
+    inset: 0;
+  }
+  .modal__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 100px;
+  }
+  .modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .modal__close svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+  }
+  .modal__counter {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9375rem;
+  }
+  .modal__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 10;
+  }
+  .modal__nav:hover {
+    background: rgba(255,255,255,0.2);
+  }
+  .modal__nav svg {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+  }
+  .modal__nav--prev { left: 16px; }
+  .modal__nav--next { right: 16px; }
+  .modal__image-container {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal__image {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    object-fit: contain;
+  }
+  .modal__thumbnails {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    max-width: 80vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .modal__thumb {
+    flex-shrink: 0;
+    width: 80px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .modal__thumb.active {
+    border-color: var(--color-accent);
+  }
+  .modal__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  const gallery = document.querySelector('.gallery') as HTMLElement;
+  const modal = document.getElementById('galleryModal') as HTMLElement;
+  
+  if (gallery && modal) {
+    const imagesData = JSON.parse(gallery.dataset.images || '[]') as string[];
+    const modalImage = modal.querySelector('.modal__image') as HTMLImageElement;
+    const currentSpan = modal.querySelector('.modal__current') as HTMLElement;
+    const totalSpan = modal.querySelector('.modal__total') as HTMLElement;
+    const thumbnailsContainer = modal.querySelector('.modal__thumbnails') as HTMLElement;
+    
+    let currentIndex = 0;
+    
+    // Generuj miniatury
+    imagesData.forEach((img, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'modal__thumb' + (i === 0 ? ' active' : '');
+      thumb.innerHTML = `<img src="${img}" alt="" />`;
+      thumb.addEventListener('click', () => goTo(i));
+      thumbnailsContainer.appendChild(thumb);
+    });
+    
+    const thumbs = modal.querySelectorAll('.modal__thumb');
+    totalSpan.textContent = imagesData.length.toString();
+    
+    const goTo = (index: number) => {
+      currentIndex = (index + imagesData.length) % imagesData.length;
+      modalImage.src = imagesData[currentIndex];
+      currentSpan.textContent = (currentIndex + 1).toString();
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
+    };
+    
+    const open = (index: number) => {
+      goTo(index);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    
+    const close = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+    
+    // Event listeners
+    gallery.querySelectorAll('.gallery__item').forEach((item, i) => {
+      item.addEventListener('click', () => open(i));
+    });
+    
+    modal.querySelector('.modal__close')?.addEventListener('click', close);
+    modal.querySelector('.modal__overlay')?.addEventListener('click', close);
+    modal.querySelector('.modal__nav--prev')?.addEventListener('click', () => goTo(currentIndex - 1));
+    modal.querySelector('.modal__nav--next')?.addEventListener('click', () => goTo(currentIndex + 1));
+    
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+    });
+  }
+</script>
