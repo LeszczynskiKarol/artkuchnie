@@ -3,16 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout 
-  title="Polityka prywatności | Art Kuchnie Toruń"
+  title="Polityka prywatności i cookies | Art Kuchnie Toruń"
   description="Polityka prywatności Art Kuchnie. Informacje o przetwarzaniu danych osobowych i wykorzystaniu plików cookies."
   canonical="https://artkuchnie.pl/polityka-prywatnosci/"
 >
 
   <section class="page-header">
     <div class="container">
-      <h1 class="page-header__title">Polityka prywatności</h1>
+      <h1 class="page-header__title">Polityka prywatności i cookies</h1>
       <p class="page-header__subtitle">
-        Informacje o przetwarzaniu danych osobowych
+        Informacje o przetwarzaniu danych osobowych i plikach cookies
       </p>
     </div>
   </section>
@@ -38,6 +38,8 @@ import Layout from '../../layouts/Layout.astro';
           <li>Realizacja zamówienia i umowy</li>
           <li>Kontakt telefoniczny lub mailowy w sprawach związanych z realizacją usługi</li>
           <li>Wystawienie faktury i prowadzenie dokumentacji księgowej</li>
+          <li>Analiza ruchu na stronie (po wyrażeniu zgody)</li>
+          <li>Marketing i personalizacja reklam (po wyrażeniu zgody)</li>
         </ul>
 
         <h2>3. Podstawa prawna przetwarzania</h2>
@@ -70,23 +72,84 @@ import Layout from '../../layouts/Layout.astro';
 
         <h2>6. Pliki cookies</h2>
         <p>
-          Strona artkuchnie.pl wykorzystuje pliki cookies (ciasteczka) w celu zapewnienia 
-          prawidłowego działania strony, analizy ruchu oraz personalizacji treści.
+          Strona artkuchnie.pl wykorzystuje pliki cookies (ciasteczka). Cookies to niewielkie pliki 
+          tekstowe zapisywane na Twoim urządzeniu przez przeglądarkę.
+        </p>
+        
+        <h3>6.1. Rodzaje cookies</h3>
+        <p>Na naszej stronie stosujemy następujące kategorie plików cookies:</p>
+        
+        <h4>Cookies niezbędne (zawsze aktywne)</h4>
+        <p>
+          Wymagane do prawidłowego działania strony. Obejmują zapamiętanie Twoich preferencji 
+          dotyczących cookies oraz podstawowe funkcje strony. Nie można ich wyłączyć.
+        </p>
+        
+        <h4>Cookies analityczne (wymagają zgody)</h4>
+        <p>
+          Pomagają nam zrozumieć, jak użytkownicy korzystają ze strony. Używamy Google Analytics 4 
+          do zbierania anonimowych danych statystycznych, takich jak liczba odwiedzin, 
+          najpopularniejsze strony, czas spędzony na stronie.
+        </p>
+        <p>Cookies analityczne:</p>
+        <ul>
+          <li><strong>_ga</strong> – identyfikator Google Analytics, wygasa po 2 latach</li>
+          <li><strong>_ga_*</strong> – identyfikator sesji GA4, wygasa po 2 latach</li>
+        </ul>
+        
+        <h4>Cookies marketingowe (wymagają zgody)</h4>
+        <p>
+          Służą do personalizacji reklam i śledzenia skuteczności kampanii reklamowych. 
+          Pozwalają wyświetlać reklamy dopasowane do Twoich zainteresowań.
+        </p>
+        
+        <h3>6.2. Zarządzanie zgodami na cookies</h3>
+        <p>
+          Przy pierwszej wizycie na stronie wyświetlamy banner z prośbą o zgodę na cookies. 
+          Możesz zaakceptować wszystkie cookies, odrzucić opcjonalne lub dostosować ustawienia 
+          według własnych preferencji.
         </p>
         <p>
-          Cookies to niewielkie pliki tekstowe zapisywane na Twoim urządzeniu przez przeglądarkę. 
-          Możesz zarządzać ustawieniami cookies w swojej przeglądarce – w tym całkowicie je zablokować. 
-          Może to jednak wpłynąć na działanie niektórych funkcji strony.
+          W każdej chwili możesz zmienić swoje preferencje klikając link 
+          <a href="#" id="openCookieSettingsLink">"Ustawienia cookies"</a> w stopce strony.
+        </p>
+        
+        <h3>6.3. Google Consent Mode v2</h3>
+        <p>
+          Stosujemy Google Consent Mode v2, który zapewnia zgodność z GDPR i pozwala Google 
+          na działanie w trybie ograniczonym nawet bez zgody użytkownika (bez zbierania danych 
+          osobowych). Po wyrażeniu zgody Google Analytics zaczyna zbierać pełne dane analityczne.
+        </p>
+        
+        <h3>6.4. Blokowanie cookies w przeglądarce</h3>
+        <p>
+          Niezależnie od ustawień na naszej stronie, możesz zarządzać cookies bezpośrednio 
+          w ustawieniach przeglądarki. Pamiętaj, że zablokowanie wszystkich cookies może 
+          wpłynąć na działanie niektórych funkcji strony.
         </p>
 
-        <h2>7. Przekazywanie danych</h2>
+        <h2>7. Usługi zewnętrzne</h2>
+        <p>Na stronie korzystamy z następujących usług zewnętrznych:</p>
+        <ul>
+          <li><strong>Google Analytics 4</strong> – analiza ruchu na stronie (Google LLC, USA)</li>
+          <li><strong>Google Tag Manager</strong> – zarządzanie tagami i skryptami (Google LLC, USA)</li>
+        </ul>
+        <p>
+          Google LLC jest uczestnikiem programu Data Privacy Framework, który zapewnia odpowiedni 
+          poziom ochrony danych osobowych przekazywanych do USA.
+        </p>
+
+        <h2>8. Przekazywanie danych</h2>
         <p>
           Twoje dane mogą być przekazywane podmiotom współpracującym z nami w zakresie realizacji 
           usług, takim jak: firmy hostingowe, dostawcy systemów IT, biuro księgowe. 
-          Dane nie są przekazywane poza Europejski Obszar Gospodarczy.
+        </p>
+        <p>
+          W przypadku wyrażenia zgody na cookies analityczne i marketingowe, dane mogą być 
+          przekazywane do Google LLC w USA na podstawie Data Privacy Framework.
         </p>
 
-        <h2>8. Zmiany polityki prywatności</h2>
+        <h2>9. Zmiany polityki prywatności</h2>
         <p>
           Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce prywatności. 
           O istotnych zmianach poinformujemy poprzez zamieszczenie nowej wersji na stronie.
@@ -98,3 +161,10 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
 </Layout>
+
+<script>
+  document.getElementById('openCookieSettingsLink')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('cookieModal')?.classList.add('active');
+  });
+</script>
