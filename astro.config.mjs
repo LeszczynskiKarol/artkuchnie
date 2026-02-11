@@ -1,9 +1,9 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: 'https://artkuchnie.pl',
-  trailingSlash: 'always',
+  site: "https://www.artkuchnie.pl",
+  trailingSlash: "always",
   build: {
-    format: 'directory'
-  }
+    format: "directory",
+  },
 });
