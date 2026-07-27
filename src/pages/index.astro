@@ -3,32 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import GoogleReviews from '../components/GoogleReviews.astro';
 import KitchenRealizationsStrip from '../components/KitchenRealizationsStrip.astro';
+import { heroImages, stripHome } from '../data/portfolio';
 
-// TUTAJ WSTAW LINKI DO ZDJĘĆ CAROUSEL (HERO)
-const HERO_IMAGES = [
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198552-2_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876419-Clipboard_06-22-2025_214_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972729-Clipboard_06-22-2025_158_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098372-Clipboard_06-22-2025_05_opt.webp',
-];
-
-// TUTAJ WSTAW LINKI DO ZDJĘĆ REALIZACJI (STRIP NA GŁÓWNEJ)
-const REALIZACJE_IMAGES = [
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274106-7_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098397-Clipboard_06-22-2025_08_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531761-Meble-66-1_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393972718-Clipboard_06-22-2025_157_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876640-Clipboard_06-22-2025_244_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198849-Clipboard_06-22-2025_19_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393876716-Clipboard_06-22-2025_257_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756393973038-Clipboard_06-22-2025_195_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531715-kmali-6-1_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098419-Clipboard_06-22-2025_63_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098525-Clipboard_06-22-2025_76_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394098544-Clipboard_06-22-2025_78_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274106-7_opt.webp',
-  'https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198944-Clipboard_06-22-2025_33_opt.webp'
-];
+// Zdjecia hero i strip pochodza z JEDNEGO zrodla: src/data/portfolio.ts
+const HERO_IMAGES = heroImages.map((p) => p.src);
+const REALIZACJE_IMAGES = stripHome.map((p) => p.src);
 
 const services = [
   {

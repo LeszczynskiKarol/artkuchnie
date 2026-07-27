@@ -1,22 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+import { stripHpl } from '../../../data/portfolio';
 
-// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI Z BLATAMI HPL
-const HPL_IMAGES = [
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531501-a1-3-1_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531540-bigkuchgru-6_opt_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531566-bigkuchgru-12_opt_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531587-Biuro-Nieruchomosci-3_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531603-KA1-1_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531628-kik-1_opt_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531654-kitch12-4_opt_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531715-kmali-6-1_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531735-kwia-11_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1740478531761-Meble-66-1_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1748596199252-3k%20(2)_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1748596199318-3k%20(13)_opt.webp",
-];
+// Zdjecia strip pochodza z JEDNEGO zrodla: src/data/portfolio.ts
+const HPL_IMAGES = stripHpl.map((p) => p.src);
 ---
 
 <Layout 

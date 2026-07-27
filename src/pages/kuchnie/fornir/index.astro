@@ -1,17 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+import { stripFornir } from '../../../data/portfolio';
 
-// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI FORNIROWANYCH
-const FORNIR_IMAGES = [
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274065-1_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274082-4_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274096-6_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274123-9_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274135-11_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274148-Clipboard_06-22-2025_152_opt.webp",
-    "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394274153-Clipboard_06-22-2025_153_opt.webp",
-];
+// Zdjecia strip pochodza z JEDNEGO zrodla: src/data/portfolio.ts
+const FORNIR_IMAGES = stripFornir.map((p) => p.src);
 ---
 
 <Layout 

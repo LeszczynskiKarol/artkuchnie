@@ -1,21 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import KitchenRealizationsStrip from '../../../components/KitchenRealizationsStrip.astro';
+import { stripLaminowane } from '../../../data/portfolio';
 
-// TUTAJ WSTAW LINKI DO ZDJĘĆ KUCHNI LAMINOWANYCH
-const LAMINOWANE_IMAGES = [
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198551-1_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198552-2_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198591-6_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198618-9_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198652-13_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198675-Clipboard_06-22-2025_03_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198694-Clipboard_06-22-2025_06_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198720-Clipboard_06-22-2025_09_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198783-Clipboard_06-22-2025_11_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198806-Clipboard_06-22-2025_13_opt.webp",
-  "https://s3.eu-north-1.amazonaws.com/piszemy.com.pl/grandkuchnie/1756394198819-Clipboard_06-22-2025_15_opt.webp",
-];
+// Zdjecia strip pochodza z JEDNEGO zrodla: src/data/portfolio.ts
+const LAMINOWANE_IMAGES = stripLaminowane.map((p) => p.src);
 ---
 
 <Layout 
