@@ -295,9 +295,49 @@ const { title, description, canonical } = Astro.props;
     // Mobile menu toggle
     const toggle = document.querySelector('.mobile-toggle');
     const navList = document.querySelector('.nav__list');
-    
+    const navDropdown = document.querySelector('.nav__dropdown');
+    const navDropdownLink = navDropdown?.querySelector(':scope > .nav__link');
+
+    const isMobileNav = () => window.matchMedia('(max-width: 768px)').matches;
+
+    function setMenu(open: boolean) {
+      navList?.classList.toggle('active', open);
+      toggle?.classList.toggle('active', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+      if (!open) navDropdown?.classList.remove('open');
+    }
+
+    toggle?.setAttribute('aria-expanded', 'false');
+
     toggle?.addEventListener('click', () => {
-      navList?.classList.toggle('active');
+      setMenu(!navList?.classList.contains('active'));
+    });
+
+    // "Rodzaje kuchni" - na mobile rozwija podmenu zamiast skakac do "#"
+    navDropdownLink?.addEventListener('click', (e) => {
+      if (!isMobileNav()) return;
+      e.preventDefault();
+      navDropdown?.classList.toggle('open');
+    });
+
+    // klik w link zamyka menu
+    navList?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (link === navDropdownLink && isMobileNav()) return;
+        setMenu(false);
+      });
+    });
+
+    // klik poza naglowkiem zamyka menu
+    document.addEventListener('click', (e) => {
+      if (!navList?.classList.contains('active')) return;
+      const target = e.target as Node;
+      if (!document.querySelector('.header')?.contains(target)) setMenu(false);
+    });
+
+    // powrot do desktopu - wyczysc stan
+    window.addEventListener('resize', () => {
+      if (!isMobileNav()) setMenu(false);
     });
     
     // Cookie Consent Management
