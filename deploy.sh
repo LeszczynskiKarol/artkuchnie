@@ -19,7 +19,21 @@ export AWS_DEFAULT_REGION="eu-north-1"
 
 cd "$(dirname "$0")"
 
-npm run build
+# Na Windowsie `astro build` konczy sie "Assertion failed: !(handle->flags &
+# UV_HANDLE_CLOSING)" (crash libuv przy zamykaniu Node) i zwraca 127 MIMO
+# poprawnie zbudowanego dist/. Exit code jest tu bezuzyteczny, wiec zamiast
+# niego kasujemy dist/ przed buildem i sprawdzamy, czy build faktycznie cos
+# wyprodukowal — to lapie prawdziwa awarie i nie wywala sie na falszywej.
+rm -rf dist
+npm run build || echo "⚠ npm run build zwrocil $? — sprawdzam dist/"
+
+for f in dist/index.html dist/blog/index.html dist/sitemap-index.xml; do
+  if [ ! -s "$f" ]; then
+    echo "✗ build nie wyprodukowal $f — przerywam, nic nie leci na S3" >&2
+    exit 1
+  fi
+done
+echo "✓ build OK ($(find dist -name '*.html' | wc -l) stron)"
 
 echo "→ S3: assety (immutable, 1 rok)"
 aws s3 sync dist/ "s3://${S3_BUCKET}/" --delete --size-only \
