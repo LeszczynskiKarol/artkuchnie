@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/BlogCard.astro";
+import { getPosts, countByCategory, slugify, SITE, type Post } from "../../../lib/blog";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getPosts();
+  const categories = [...new Set(posts.map((p) => p.data.category))];
+  return categories.map((category) => ({
+    params: { kategoria: slugify(category) },
+    props: { category, posts: posts.filter((p) => p.data.category === category) },
+  }));
+};
+
+interface Props {
+  category: string;
+  posts: Post[];
+}
+
+const { category, posts } = Astro.props;
+const all = await getPosts();
+const categories = countByCategory(all);
+const url = `${SITE}/blog/kategoria/${slugify(category)}/`;
+---
+
+<Layout
+  title={`${category} — blog o kuchniach | Art Kuchnie Toruń`}
+  description={`Artykuły z kategorii „${category}" na blogu Art Kuchnie Toruń. Praktyczne porady o kuchniach na wymiar.`}
+  canonical={url}
+>
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Blog</span>
+      <h1 class="page-header__title">{category}</h1>
+      <p class="page-header__subtitle">
+        {posts.length} {posts.length === 1 ? "artykuł" : posts.length < 5 ? "artykuły" : "artykułów"} w tej kategorii.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <nav class="blog-filters" aria-label="Kategorie artykułów">
+        <a href="/blog/" class="blog-filters__item">Wszystkie ({all.length})</a>
+        {Object.entries(categories).map(([name, count]) =>
+          name === category ? (
+            <span class="blog-filters__item blog-filters__item--active">{name} ({count})</span>
+          ) : (
+            <a href={`/blog/kategoria/${slugify(name)}/`} class="blog-filters__item">{name} ({count})</a>
+          ),
+        )}
+      </nav>
+
+      <div class="blog-grid">
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

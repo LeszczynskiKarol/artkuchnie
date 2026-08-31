@@ -1,0 +1,39 @@
+---
+import { formatDate, readingTime, slugify, type Post } from "../lib/blog";
+
+interface Props {
+  post: Post;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const { title, description, category, publishDate, image, imageAlt } = post.data;
+---
+
+<article class={`blog-card${featured ? " blog-card--featured" : ""}`}>
+  <a href={`/blog/${post.slug}/`} class="blog-card__media" aria-hidden="true" tabindex="-1">
+    {image ? (
+      <img src={image} alt={imageAlt || ""} loading="lazy" decoding="async" />
+    ) : (
+      <span class="blog-card__placeholder">{title.slice(0, 2).toUpperCase()}</span>
+    )}
+  </a>
+
+  <div class="blog-card__body">
+    <div class="blog-card__meta">
+      <a href={`/blog/kategoria/${slugify(category)}/`} class="blog-card__category">{category}</a>
+      <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
+    </div>
+
+    <h3 class="blog-card__title">
+      <a href={`/blog/${post.slug}/`}>{title}</a>
+    </h3>
+
+    <p class="blog-card__excerpt">{description}</p>
+
+    <div class="blog-card__footer">
+      <span>{readingTime(post.body)} min czytania</span>
+      <span class="blog-card__more">Czytaj dalej →</span>
+    </div>
+  </div>
+</article>

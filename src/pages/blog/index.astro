@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import { getPosts, countByCategory, slugify, SITE } from "../../lib/blog";
+
+const posts = await getPosts();
+const categories = countByCategory(posts);
+const featured = posts.filter((p) => p.data.featured).slice(0, 2);
+const rest = posts.filter((p) => !featured.includes(p));
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Blog Art Kuchnie Toruń",
+  description:
+    "Porady o kuchniach na wymiar: materiały, fronty, blaty, ergonomia i koszty.",
+  url: `${SITE}/blog/`,
+  publisher: {
+    "@type": "Organization",
+    name: "Art Kuchnie Toruń",
+    url: SITE,
+  },
+};
+---
+
+<Layout
+  title="Blog o kuchniach na wymiar | Art Kuchnie Toruń"
+  description="Poradnik o kuchniach na wymiar: jak dobrać fronty i blaty, ile kosztuje kuchnia, jak zaprojektować ergonomiczną zabudowę. Praktyczna wiedza od stolarzy z Torunia."
+  canonical={`${SITE}/blog/`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+
+  <section class="page-header">
+    <div class="container">
+      <span class="page-header__label">Blog</span>
+      <h1 class="page-header__title">Poradnik kuchenny</h1>
+      <p class="page-header__subtitle">
+        Materiały, blaty, ergonomia i koszty — wszystko, co warto wiedzieć,
+        zanim zamówisz kuchnię na wymiar.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {Object.keys(categories).length > 0 && (
+        <nav class="blog-filters" aria-label="Kategorie artykułów">
+          <span class="blog-filters__item blog-filters__item--active">
+            Wszystkie ({posts.length})
+          </span>
+          {Object.entries(categories).map(([name, count]) => (
+            <a href={`/blog/kategoria/${slugify(name)}/`} class="blog-filters__item">
+              {name} ({count})
+            </a>
+          ))}
+        </nav>
+      )}
+
+      {posts.length === 0 ? (
+        <p class="blog-empty">
+          Pierwsze artykuły pojawią się tu wkrótce. W międzyczasie zajrzyj do
+          <a href="/realizacje/">naszych realizacji</a>.
+        </p>
+      ) : (
+        <>
+          {featured.length > 0 && (
+            <div class="blog-grid blog-grid--featured">
+              {featured.map((post) => <BlogCard post={post} featured />)}
+            </div>
+          )}
+          <div class="blog-grid">
+            {rest.map((post) => <BlogCard post={post} />)}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__title">Planujesz nową kuchnię?</h2>
+      <p class="cta__text">
+        Przyjedziemy, zmierzymy i przygotujemy projekt z wyceną — bezpłatnie.
+      </p>
+      <div class="cta__buttons">
+        <a href="/kontakt/" class="btn btn--primary">Bezpłatna wycena</a>
+        <a href="/realizacje/" class="btn btn--white">Zobacz realizacje</a>
+      </div>
+    </div>
+  </section>
+</Layout>
